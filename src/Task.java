@@ -1,4 +1,7 @@
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class Task {
 
@@ -12,8 +15,10 @@ public class Task {
      * @param day   = 8
      * @return "Среда"
      */
+
     public String getWeekOfDay(int year, int month, int day) {
-        return "";
+
+        return  String.valueOf(LocalDate.of(year, month, day).getDayOfWeek());
     }
 
     /**
@@ -31,7 +36,23 @@ public class Task {
      * @return 2.5
      */
     public double method1(int[] array, int[] secondArray) {
-        return 0;
+        int merid = 0;
+        List<Integer> integerList = new ArrayList<>();
+        for (Integer i: array) {
+            integerList.add(i);
+        }
+        for (Integer i: secondArray) {
+            integerList.add(i);
+        }
+        Collections.sort(integerList);
+
+        if (integerList.size()%2 != 0) {
+            merid = integerList.size() - integerList.size() / 2;
+
+
+            //return integerList.stream().mapToInt(a -> a).average().orElse(0);
+        }
+        return integerList.get(merid) + integerList.get(merid + 1)/2 ;
     }
 
     /**
@@ -46,6 +67,11 @@ public class Task {
      * {7,8,9}}
      */
     public int[][] getSortedArray(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+
+            }
+        }
         return new int[0][0];
     }
 
@@ -58,7 +84,17 @@ public class Task {
      * @return 3 - так как в стоке sadbutsad(sadBUTsad), but начинается с третьего индекса
      */
     public int getIndex(String longWord, String word) {
-        return 0;
+        int res = 0;
+        if (longWord.contains(word)) {
+            int sec = word.charAt(0);
+            for (int i = 0; i < longWord.length(); i++) {
+                char ch = longWord.charAt(i);
+                if (sec == ch) {
+                    res = i;
+                }
+            }
+        }
+        return res;
     }
 
     /**
@@ -69,7 +105,17 @@ public class Task {
      * @return {@link DuplicateWord} [{word=ручка,count=2},{word=телефон,count=3},{word=книга,count=1}]
      */
     public DuplicateWord[] getDuplicateWord(String[] text) {
-        return null;
+
+        for (int i = 0; i < text.length; i++) {
+            for (int j = 0; j < text.length; j++) {
+                if (text[i].equals(text[j])) {
+
+                }
+            }
+
+        }
+
+        return new DuplicateWord[0];
     }
 
     /**
@@ -79,6 +125,19 @@ public class Task {
      * @return 4
      */
     public int getSmallestMissing(int[] numbers) {
+        List<Integer> integerList = new ArrayList<>();
+        for (Integer x: numbers) {
+            integerList.add(x);
+        }
+        Collections.sort(integerList);
+        int x = integerList.get(0);
+        for (int i = 0; i < integerList.size(); i++) {
+            if (integerList.get(i) == x){
+                x++;
+            } else {
+                return x;
+            }
+        }
         return 0;
     }
 
@@ -89,6 +148,7 @@ public class Task {
      * @return [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
      */
     public List<List<Integer>> permute(int[] nums) {
+
         return null;
     }
 
@@ -114,7 +174,12 @@ public class Task {
      * @return 1024.00000
      */
     public double myPow(double x, int n) {
-        return 0;
+        double res = x;
+        for (int i = 0; i < n; i++) {
+                res = res*x;
+
+        }
+        return res/2;
     }
 
     static class DuplicateWord {
